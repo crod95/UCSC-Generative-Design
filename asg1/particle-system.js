@@ -5,10 +5,13 @@ function ParticleSystem(num,y)
 
 	this.display = function()
 	{
-
-		stroke(255);
-		fill(255, 150);
-		ellipse(this.x, this.y, 48, 48);
+		let col = random(255);
+		for(var n = 0; n < num; n++)
+		{
+			fill(col - 20, col -20, col -20);
+			stroke(random(255), random(255));
+			ellipse(this.x, this.y - (n * 10), this.radius/n, this.radius/n);
+		}
 	}
 
 	this.move = function()

@@ -6,8 +6,9 @@ function Particle(corX, corY, partWidth, partHeight)
 	this.radius = partWidth;
 	//this.wth = partWidth;			//Width of the particle (int)
 	//this.hgt = partHeight;		//Length of the particle (int)
-	this.speed = random(1,5);		//Speed of the particle (float)
+	this.speed = random(1,10);		//Speed of the particle (float)
 	this.alive = true;				//If the particle is still alive or not (bool)
+	this.lifetime = random(1,5);
 
 	//Draw each ellipse 
 	this.display = function()
@@ -19,7 +20,7 @@ function Particle(corX, corY, partWidth, partHeight)
 
 	this.speedChange = function(s)
 	{
-		this.speed = s * 50;
+		this.speed = s * (rms * 25);
 	}
 
 	this.move = function()
@@ -32,14 +33,15 @@ function Particle(corX, corY, partWidth, partHeight)
 		else
 		{
 			//Hide the particle off-screen
-			this.y = -200;
+			this.y = -100;
 		}
 	}
 
 	this.reset = function()
 	{
-		if(this.y > 500)
+		if(this.y > 530)
 		{
+			alive = false;
 			this.y = 0;
 		}
 	}

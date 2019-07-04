@@ -3,6 +3,7 @@ var particles = [];
 var amplitude;
 var mapMax = 1.0;
 var num = 20;
+var time = 0;
 
 function preload() 
 {
@@ -21,13 +22,16 @@ function setup()
 	{
 		var pRadius = random(30,60);
 		var x = random(20,480);
-		var y = random(-20,0);
+		var y = random(-140,-20);
 		particles.push(new Particle(x,y,pRadius,pRadius));
+		let lifetime = random(1,5);
 	}
 }
 
 function draw() 
 {
+	time = second();
+	console.log(time/100);
 	background(0);
 
 	//Get the average (root mean square) amplitude
@@ -41,7 +45,7 @@ function draw()
 		particles[j].display();
 		particles[j].reset();
 	}
-	console.log("rms: " + rms);
+	//console.log("rms: " + rms);
 	
 }
 
