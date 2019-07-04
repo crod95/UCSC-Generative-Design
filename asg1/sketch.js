@@ -1,5 +1,6 @@
 //Cristian Rodriguez
 var particles = [];
+var particleSystems = [];
 var amplitude;
 var mapMax = 1.0;
 var num = 20;
@@ -15,15 +16,17 @@ function setup()
 	createCanvas(500,500);
 	//Create a new Amplitude analyzer
 	globalSong.loop();
-	analyzer = new p5.Amplitude();
+	analyzer = new p5.Amplitu de();
 	//Patch the input to an volume analyzer
 	analyzer.setInput(globalSong);
 	for(var i = 0; i < num; i++)
 	{
+		var N = random(5,10);
 		var pRadius = random(30,60);
 		var x = random(20,480);
 		var y = random(-140,-20);
 		particles.push(new Particle(x,y,pRadius,pRadius));
+		//particleSystems.push(new ParticleSystem(N, x, y, random(5,10)));
 		let lifetime = random(1,5);
 	}
 }
@@ -31,7 +34,7 @@ function setup()
 function draw() 
 {
 	time = second();
-	console.log(time/100);
+	//console.log(time/100);
 	background(0);
 
 	//Get the average (root mean square) amplitude

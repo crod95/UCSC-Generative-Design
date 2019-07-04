@@ -1,23 +1,25 @@
-function ParticleSystem(num,y)
+//Cristian Rodriguez
+function ParticleSystem(num, x, y, chg)
 {
-	this.size = num;
-	this.y = y;
+	this.size = num;		//num is the number of particles that follow the parent particle
+	this.y = y;	
+	this.x = x;			//Increments of how far the other particles follow
+	this.move
 
 	this.display = function()
 	{
-		let col = random(255);
-		for(var n = 0; n < num; n++)
+		let color = random(255);
+		for(var n = 1; n <= num; n++)
 		{
-			fill(col - 20, col -20, col -20);
-			stroke(random(255), random(255));
-			ellipse(this.x, this.y - (n * 10), this.radius/n, this.radius/n);
+			fill(color - (chg*n), color - (chg*n), color - (chg*n));
+			stroke(color - (20*n));
+			ellipse(this.x, this.y - (chg*n), this.radius/n, this.radius/n);
 		}
 	}
 
 	this.move = function()
 	{
-		this.x = this.x + random(-1,1);
-		this.y = this.y + random(-1,1);
+		this.y = this.y + chg;
 	}
 
 	

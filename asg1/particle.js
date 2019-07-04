@@ -1,4 +1,5 @@
 //Cristian Rodriguez
+ 
 function Particle(corX, corY, partWidth, partHeight)
 {
 	this.x = corX;					//X coordinate (int)
@@ -8,7 +9,8 @@ function Particle(corX, corY, partWidth, partHeight)
 	//this.hgt = partHeight;		//Length of the particle (int)
 	this.speed = random(1,10);		//Speed of the particle (float)
 	this.alive = true;				//If the particle is still alive or not (bool)
-	this.lifetime = random(1,5);
+	this.lifetime = random(5,10);
+	this.counter = 0;
 
 	//Draw each ellipse 
 	this.display = function()
@@ -16,6 +18,8 @@ function Particle(corX, corY, partWidth, partHeight)
 		fill(random(255),random(255),random(255));
 		stroke(random(255), random(255));
 		ellipse(this.x, this.y, this.radius, this.radius);
+		//ps.move();
+		//ps.display();
 	}
 
 	this.speedChange = function(s)
@@ -33,13 +37,13 @@ function Particle(corX, corY, partWidth, partHeight)
 		else
 		{
 			//Hide the particle off-screen
-			this.y = -100;
+			this.y = -20;
 		}
 	}
 
 	this.reset = function()
 	{
-		if(this.y > 530)
+		if(this.y > 530 || this.lifetime < this.counter)
 		{
 			alive = false;
 			this.y = 0;
