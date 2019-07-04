@@ -1,25 +1,53 @@
 //Cristian Rodriguez
-
-//Bubbles example
-function Bubble(x,y)
+function Particle(corX, corY, partWidth, partHeight)
 {
-	this.x = x;
-	this.y = y;
+	this.x = corX;					//X coordinate (int)
+	this.y = corY;					//Y coordinate (int)
+	this.radius = partWidth;
+	//this.wth = partWidth;			//Width of the particle (int)
+	//this.hgt = partHeight;		//Length of the particle (int)
+	this.speed = random(1,5);		//Speed of the particle (float)
+	this.alive = true;				//If the particle is still alive or not (bool)
 
+	//Draw each ellipse 
 	this.display = function()
 	{
+		fill(random(255),random(255),random(255));
+		stroke(random(255), random(255));
+		ellipse(this.x, this.y, this.radius, this.radius);
+	}
 
-		stroke(255);
-		fill(255, 150);
-		ellipse(this.x, this.y, 48, 48);
+	this.speedChange = function(s)
+	{
+		this.speed = s * 50;
 	}
 
 	this.move = function()
 	{
-		this.x = this.x + random(-10,10);
-		this.y = this.y + random(-10,10);
+		//let rms = analyzer.getLevel();
+		if(alive = true)
+		{
+			this.y = this.y + this.speed;
+		}
+		else
+		{
+			//Hide the particle off-screen
+			this.y = -200;
+		}
 	}
 
+	this.reset = function()
+	{
+		if(this.y > 500)
+		{
+			this.y = 0;
+		}
+	}
+
+	this.activate = function()
+	{
+		alive = !alive;
+	}
 	
 }
 
@@ -33,8 +61,8 @@ class Particle
 	{
 		this.x = corX;					//X coordinate (int)
 		this.y = corY;					//Y coordinate (int)
-		this.width = partWidth;			//Width of the particle (int)
-		this.height = partHeight;		//Length of the particle (int)
+		this.wth = partWidth;			//Width of the particle (int)
+		this.hgt = partHeight;		//Length of the particle (int)
 		this.speed = partSpeed;			//Speed of the particle (float)
 		this.alive = born;				//If the particle is still alive or not (bool)
 	}

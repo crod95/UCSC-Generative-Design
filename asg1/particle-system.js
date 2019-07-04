@@ -1,10 +1,21 @@
-class ParticleSystem
+function ParticleSystem(num,y)
 {
-	constructor(partSysCount, partSysList)
+	this.size = num;
+	this.y = y;
+
+	this.display = function()
 	{
-		this.count = partSysCount;
-		this.List = partSysList;
+
+		stroke(255);
+		fill(255, 150);
+		ellipse(this.x, this.y, 48, 48);
 	}
 
+	this.move = function()
+	{
+		this.x = this.x + random(-1,1);
+		this.y = this.y + random(-1,1);
+	}
 
+	
 }
