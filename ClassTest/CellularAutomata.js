@@ -27,10 +27,33 @@ class CellularAutomata {
          this.generation++;
      }
 
-     applyRuleset(left, middle, right) {
-         let bitseq = "" + left + middle + right;
-         let ix = parseInt(bitseq, 2);
-         return this.ruleset[ix];
+     applyRuleset(left, middle, right) 
+     {
+     	let caseChoice = random(0,3);
+     	if(caseChoice == 0)
+     	{
+     		let bitseq0 = "" + right + middle + left;
+     		let ix0 = parseInt(bitseq0,2);
+     		return this.ruleset[ix0];
+     	}
+     	else if(caseChoice == 1)
+     	{
+     		let bitseq1 = "" + right + left + middle;
+     		let ix1 = parseInt(bitseq1,2);
+     		return this.ruleset[ix1];
+     	}
+     	else if(caseChoice == 2)
+    	{
+    		let bitseq2 = "" + middle + right + left;
+    		let ix2 = parseInt(bitseq2,2);
+    		return this.ruleset[ix2];
+    	}
+    	else
+    	{
+    		let bitseq = "" + left + middle + right;
+    	    let ix = parseInt(bitseq, 2);
+	        return this.ruleset[ix];
+    	}
      }
 
      draw(w) {

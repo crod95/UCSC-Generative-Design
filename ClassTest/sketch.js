@@ -16,7 +16,10 @@ function draw()
 
     if(ca.generation > 50) 
     {
-        noLoop();
+        //noLoop();
+        background(255);
+        ca.draw(w);
+        ca.generate();
     }
 }
 
