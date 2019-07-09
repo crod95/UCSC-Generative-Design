@@ -29,6 +29,7 @@ class CellularAutomata {
 
      applyRuleset(left, middle, right) 
      {
+     	/*
      	let caseChoice = random(0,3);
      	if(caseChoice == 0)
      	{
@@ -53,7 +54,12 @@ class CellularAutomata {
     		let bitseq = "" + left + middle + right;
     	    let ix = parseInt(bitseq, 2);
 	        return this.ruleset[ix];
-    	}
+    	} 
+    	*/
+    	
+    	let bitseq = "" + left + middle + right;
+    	let ix = parseInt(bitseq, 2);
+	    return this.ruleset[ix];
      }
 
      draw(w) {

@@ -1,25 +1,31 @@
-
+let width;
+let height;
 
 function setup() 
 {
-    createCanvas(600, 600);
+	width = 500;
+	height = 500;
+    createCanvas(width, height);
 
-    w = 10;
+    cellSize = 10;
     ruleset = [0,1,0,1,1,0,1,0];
-    ca = new CellularAutomata(width/w, ruleset);
+    ca = new CellularAutomata(width/cellSize, ruleset);
 }
 
 function draw() 
 {
-    ca.draw(w);
+    ca.draw(cellSize);
     ca.generate();
 
-    if(ca.generation > 50) 
+    if(ca.generation > width/cellSize) 
     {
         //noLoop();
-        background(255);
-        ca.draw(w);
-        ca.generate();
+        ruleSet = [1,1,1,1,1,1,1,1]
+        for (let i = 0; i < ruleset; i++)
+        {
+        	ruleset[i]= random() < 0.5 ? 0: 1;        
+        }
+        ca = new CellularAutomata(width/cellSize, ruleset);
     }
 }
 
