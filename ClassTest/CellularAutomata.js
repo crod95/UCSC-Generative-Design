@@ -12,7 +12,8 @@ class CellularAutomata {
         this.cells[size/2] = 1;
      }
 
-     generate() {
+     generate() 
+     {
          let nextgen = new Array(this.cells.length).fill(0);
 
          for(let i = 1; i < this.cells.length - 1; i++) {
