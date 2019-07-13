@@ -1,17 +1,16 @@
 //Cristian Rodriguez W1561133
 let newWorld;
-let terrainCubes = [];
-let testObj;
 let canWidth = 600;
 let canHeight = 600;
 let mapSize = 32;
 let boxSize = 10;
 let mapHeight = 32;
+let grass, snow, water, dirt;
 //Map parameters, (h,w,d) respectively for height, width, and depth
 
 function preload()
 {
-	this.grass = loadImage('grassTexture.jpg');
+	//let grass = loadImage('grassTexture.jpg');
 		//this.dirt = loadImage('dirtTexture.jpg');
 		//this.snow = loadImage('snowTexture.jpg');
 		//this.water = loadImage('waterTexture.jpg');
@@ -40,10 +39,7 @@ function draw()
 	//let camX = map(mouseX,0,width,-200,0);
 	//let camY = map(0,mouseY,height,-200,0);
 	//camera(camX,0,(height/2)/tan(PI/6),camX,0,0,0,1,1);
-	//translate(100,100,100);
-	//terrainCubes.push(new WorldGenerator(10,10,10,10));
-	//terrainCubes[j] = new WorldGenerator(10,10,10,10);
-	//terrainCubes[j].display();
+
 
 	newWorld = new WorldGenerator(mapSize,boxSize,mapHeight);
 	while(newWorld.generationDone() == false)
