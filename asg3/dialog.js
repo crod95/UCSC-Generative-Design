@@ -49,4 +49,9 @@ class DialogBox
 	{
 		return this.canHeight;
 	}
+
+	inputString(str)
+	{
+		print("String Accepted: " + str);
+	}
 }
