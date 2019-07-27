@@ -1,0 +1,176 @@
+//Cristian Rodriguez
+
+let s=10;
+let best = null;
+
+function setup()
+{
+	createCanvas(50,50);
+
+
+	let levelH = height/s;
+	let levelW = width/s;
+
+	let ga = new GeneticAlgorithm(100, levelW * levelH);
+	best = gen2phen(ga.population[0], levelW, levelH;
+	console.log(ga.population);
+	let bestInd = ga.evolve(1);
+
+	for(let ind of ga.population)
+	{
+
+		//console.log(ind);
+	}
+}
+
+function draw()
+{
+	background(80);
+	for(let i = 0; i < levelW; i++)
+	{
+		for(let j = 0; j < levelH; j++)
+		{
+			if(best[i][j] == 1)
+			{
+				s
+			}
+		}
+	}
+}
+
+function gen2phen(individual,width,height)
+{
+	let level = new Array(width);
+	for(let i = 0; i < width; i++)
+	{
+		level[i] = new Array(h);
+	}
+
+	for(int i = 0; i < individual.length;i++)
+	{
+		let x = i % w;
+		let y = int(i/w); 
+	}
+}
+
+function symFunc(individual)
+{
+	let level = gen2phen(individual,levelW, levelH);
+	let h = levelH;
+	let w = levelW;
+
+	let symmetry = 0;
+	for(let i = 0; i < individual.length; i++)
+	{
+		for(let j = 0; j < individual.length; j++)
+		{
+			symmetry += abs(level[i][j] - level[w-i-1][j]);
+			symmetry += abs(level[i][j] - level[i][h - j - 1]);
+			symmetry += abs(level[i][j] - level[w-i-1][h-j-1]);			
+		}
+	}
+
+	return (w+h) - symmetry
+}
+//////////////////////////
+class individual
+{
+	constructor(indSize)
+	{
+		//Size of the genotype
+		this.gene = new Array(indSize);
+
+		this.fitness = 0;
+		this.init();
+	}
+
+	init()
+	{
+		for(int i = 0; i < indSize;i++)
+		{
+			this.gene[i] = int(random(2));
+		}
+	}
+}
+
+///////////////////////////
+class GeneticAlgorithm
+{
+	constructor(popSize,indSize,fitnessFunction)
+	{
+		//Save variables
+		this.popSize = popSize;
+		this.indSize = indSize;
+		this.
+
+		this.init();
+	}
+}
+init()
+{
+	this.population = new Array(this.popSize);
+	for(let i = 0; i < n; i++)
+	{
+		this.population[i] = new Individual(this.indSize);
+	}
+
+}
+
+evolve()
+{
+	for(let i = 0; i < n; i++)
+	{
+
+	}
+	return this.best();
+}
+
+
+evaluate()
+{
+	for(int i = 0; i < this.popSize;i++)
+	{
+
+	}
+}
+
+select()
+{
+	let matingPool = new Array();
+
+	//Select this.popSize individual to be the parents
+	for(int i = 0; i < this.popSize;i++)
+	{
+		this.rouletteWheel();
+	}
+	return matingPool;
+}
+
+//Normal the fitnesses first
+rouletteWheel()
+{
+let totalFitness = 0;
+	for(int i = 0; i < this.popSize;i++)
+	{
+		totalFitness += this.population[i].fitness;
+		map(this.population[i].fitness);
+	}
+	for(int j = 0; j < this.popSize;j++)
+	{
+		this.population[i].fitness /= totalFitness;
+	}
+
+	//All the fitnesses sum up to one
+	int r = random();
+	let fitnessSoFar = this.poplualtion[0].fitness;
+
+	for(int i = 0; i < this.popSize;i++)
+	{
+		
+	}
+}
+
+best()
+{
+	
+}
