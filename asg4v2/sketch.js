@@ -177,7 +177,6 @@ function fitFunct(genotype)
         //console.log(tempCar.name + " " + carFit);   
         
         //console.log(tempCar.name + " " + tempCar.feats);
-        //newGen.set
     }
 }
 /*
