@@ -1,7 +1,9 @@
 let _midiPlayer;
 
-class MidiPlayer {
-    constructor() {
+class MidiPlayer 
+{
+    constructor() 
+    {
         this.ts = 0;
         this.pianoRollBufferLength = 30;
         this.tsize = height/128;
@@ -11,8 +13,10 @@ class MidiPlayer {
 
         this.pianoRolls = [];
 
-        this.synth = new Tone.PolySynth(10, Tone.Synth, {
-            envelope : {
+        this.synth = new Tone.PolySynth(10, Tone.Synth, 
+        {
+            envelope : 
+            {
     			attack  : 0.02,
     			decay   : 0.1,
     			sustain : 0.3,
@@ -23,17 +27,21 @@ class MidiPlayer {
         _midiPlayer = this;
     }
 
-    loadMidis(path, onMidisLoaded) {
+    loadMidis(path, onMidisLoaded) 
+    {
         this.midis = [];
 
         // Load json file with a list of midi files
-        this.loadFile(path, "text", function(xhttp) {
+        this.loadFile(path, "text", function(xhttp) 
+        {
             let dataset = JSON.parse(xhttp.responseText);
 
-            for(let filename in dataset) {
+            for(let filename in dataset) 
+            {
 
                 // Load each midi file listed in the json
-                _midiPlayer.loadFile(dataset[filename], "arraybuffer", function(xhttp) {
+                _midiPlayer.loadFile(dataset[filename], "arraybuffer", function(xhttp) 
+                {
                     let byteArray = new Uint8Array(xhttp.response);
 
                     let midi = new Midi(byteArray);
@@ -47,7 +55,8 @@ class MidiPlayer {
                     _midiPlayer.pianoRolls.push(pianoRoll);
 
                     // When all files are loaded, call callback function
-                    if(_midiPlayer.pianoRolls.length == Object.keys(dataset).length) {
+                    if(_midiPlayer.pianoRolls.length == Object.keys(dataset).length) 
+                    {
                         onMidisLoaded(_midiPlayer.pianoRolls);
                     }
                 });
@@ -55,12 +64,15 @@ class MidiPlayer {
         });
     }
 
-    loadFile(path, type, onFileLoad) {
+    loadFile(path, type, onFileLoad) 
+    {
         var xhttp = new XMLHttpRequest();
         xhttp.responseType = type;
 
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+        xhttp.onreadystatechange = function() 
+        {
+            if (this.readyState == 4 && this.status == 200) 
+            {
                 onFileLoad(xhttp);
             }
         };
@@ -69,10 +81,13 @@ class MidiPlayer {
         xhttp.send();
     }
 
-    parseMidi(midiData) {
+    parseMidi(midiData) 
+    {
         let notes = [];
-        for(let track of midiData.tracks) {
-            for(let note of track.notes) {
+        for(let track of midiData.tracks) 
+        {
+            for(let note of track.notes) 
+            {
                 notes.push(note);
             }
         }
@@ -80,16 +95,19 @@ class MidiPlayer {
         return {"duration": midiData.duration, "notes": notes};
     }
 
-    notes2PianoRoll(duration, notes) {
+    notes2PianoRoll(duration, notes) 
+    {
         let timeSteps = ceil(duration/this.tsDuration);
 
         // Create empty piano roll.
         let pianoRoll = new Array(timeSteps);
-        for (let i = 0; i < timeSteps; i++) {
+        for (let i = 0; i < timeSteps; i++) 
+        {
             pianoRoll[i] = new Array(128).fill(0);
         }
 
-        for(let note of notes) {
+        for(let note of notes) 
+        {
             let ts = floor(note.time/this.tsDuration);
             let pitch = note.midi;
             let duration = floor(note.duration/this.tsDuration);
@@ -100,11 +118,14 @@ class MidiPlayer {
         return pianoRoll;
     }
 
-    pianoRoll2Text(pianoRoll) {
+    pianoRoll2Text(pianoRoll) 
+    {
         let midiText = "";
 
-        for (let i = 0; i < pianoRoll.length; i++) {
-            for (let j = 0; j < pianoRoll[i].length; j++) {
+        for (let i = 0; i < pianoRoll.length; i++) 
+        {
+            for (let j = 0; j < pianoRoll[i].length; j++) 
+            {
                 if (pianoRoll[i][j] > 0) {
                     midiText +=  j + "_" + pianoRoll[i][j] + " ";
                 }

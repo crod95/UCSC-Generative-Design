@@ -1,6 +1,7 @@
 let isClicked = false;
 
-function setup() {
+function setup() 
+{
     createCanvas(windowWidth, windowHeight);
     background(240);
 
@@ -10,27 +11,32 @@ function setup() {
 
     midiPlayer = new MidiPlayer();
     midiPlayer.loadMidis("data/midi_files.json", onMIDIsLoaded);
-}
+} 
 
-function draw() {
+function draw() 
+{
     midiPlayer.draw();
 }
 
-function onButtonClicked() {
+function onButtonClicked() 
+{
     isClicked = !isClicked;
 
-    if(isClicked) {
+    if(isClicked) 
+    {
         // console.log("start");
         button.elt.innerHTML = "Pause";
         midiPlayer.start();
     }
-    else {
+    else 
+    {
         button.elt.innerHTML = "Play";
         midiPlayer.pause();
     }
 }
 
-function onMIDIsLoaded(pianoRolls) {
+function onMIDIsLoaded(pianoRolls) 
+{
     // Pick random file to play
     let pianoRoll = random(pianoRolls);
 
@@ -41,6 +47,7 @@ function onMIDIsLoaded(pianoRolls) {
     console.log(midiText);
 }
 
-function tsCallback(currentTs, notesOn) {
-    // console.log(currentTs, notesOn);
+function tsCallback(currentTs, notesOn) 
+{
+    console.log(currentTs, notesOn);
 }
