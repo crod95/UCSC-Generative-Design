@@ -16,7 +16,7 @@ function setup()
 	createCanvas(500,500);
 	//Create a new Amplitude analyzer
 	globalSong.loop();
-	analyzer = new p5.Amplitu de();
+	analyzer = new p5.Amplitude();
 	//Patch the input to an volume analyzer
 	analyzer.setInput(globalSong);
 	for(var i = 0; i < num; i++)
