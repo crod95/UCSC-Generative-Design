@@ -3,7 +3,7 @@
 //Canvas setup variables
 let canWidth = 600;
 let canHeight = 600;
-
+let inconsolata;
 
 //Map parameters, (h,w,d) respectively for height, width, and depth
 //Represents the grid of the map which is (mapSize x mapSize x mapHeight)
@@ -26,7 +26,8 @@ var time = 0;
 //FFT and world generator variables
 let newWorld;
 var fft;
-var button;
+var button1;
+var slider1;
 var bandWidth;
 var smoothingFactor;
 
@@ -41,6 +42,7 @@ function preload()
 {
 	songListSize = 10;
 	songList = new Array(songListSize);
+	inconsolata = loadFont('fonts/inconsolata-Bold.otf');
 	//globalSong = loadSound('Phlex_TakeMeHomeTonightfeat.CaitlinGare.mp3');
 	//globalSong = loadSound(songName);
 	/*
@@ -117,14 +119,31 @@ function setup()
 	//colorMode(HSB);
 	//console.log("Running setup");
 	createCanvas(canWidth,canHeight,WEBGL);
-	button = createButton('Toggle');
-	button.mousePressed(toggleSong);
+	textFont(inconsolata);
+
+	//Instructions
+	
+	let s = 'Testing for the text box sucks lol sdaksjfjefxnamd';
+	fill(50);
+	text('Hello World Hello World Hello World Hello World Hello World ', 700, 60); // Text wraps within text box
+	
+
+	//Pause and play button
+	button1 = createButton('Play/Pause');
+	button1.position(620,660);
+	button1.mousePressed(toggleSong);
+
+
+
 	globalSong.play();
 
 	//Create a new FFT object (FFT([smoothing], [bins]))
 	smoothingFactor = 0.8;
 	fft = new p5.FFT(smoothingFactor,mapSize);
 	bandWidth = mapSize;
+
+	//camera([x], [y], [z], [centerX], [centerY], [centerZ], [upX], [upY], [upZ])
+	camera((width/2.0) / tan(PI*30.0 / 180.0), 0, (height/2.0) / tan(PI*30.0 / 180.0), width, 0, 0, 0, 1, 0);
 	//pixelDensity(1);
 	//cameraLocation = createVector(0, 100, (height/2.0) / tan(PI*30.0 / 180.0));
   	//sketchLocation = createVector(0, 0,0);

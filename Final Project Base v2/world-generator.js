@@ -87,7 +87,7 @@ class WorldGenerator
 					laneModifier = 1;
 					laneAddon = Math.floor(Math.random() * 100);
 				}
-				this.cells[x][z] = amp/9 * laneModifier + laneAddon;
+				this.cells[x][z] = amp/8 * laneModifier + laneAddon;
 			}
 		}
 	}
