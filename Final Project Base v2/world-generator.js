@@ -6,7 +6,7 @@ class WorldGenerator
 	{
 		this.mSize = mapSize;
 		this.bSize = boxSize;
-		this.laneSize = 3;
+		this.laneSize = 4;
 		this.maxHeight = mHeight;
 		this.cells = new Array(mapSize);
 		this.noiseScale = 0.02;
@@ -59,12 +59,35 @@ class WorldGenerator
 
 	musicVariate(spectrumHeights)
 	{
+		//Math.floor(Math.random() * 100);
 		for (let x = 0; x < this.mSize; x++)
 		{
 			let amp = spectrumHeights[x];
 			for(let z = 0; z < this.laneSize; z++)
 			{
-				this.cells[x][z] = amp/10;
+				let laneModifier;
+				let laneAddon;
+				if(z%4 == 0)
+				{
+					laneModifier = 1;
+					laneAddon = -(Math.floor(Math.random() * 100));
+				}
+				else if(z%4 == 1)
+				{
+					laneModifier = 1;
+					laneAddon = 0;
+				}
+				else if(z%4 == 2)
+				{
+					laneModifier = -1;
+					laneAddon = 0;
+				}
+				else if(z%4 == 3)
+				{
+					laneModifier = 1;
+					laneAddon = Math.floor(Math.random() * 100);
+				}
+				this.cells[x][z] = amp/9 * laneModifier + laneAddon;
 			}
 		}
 	}

@@ -13,7 +13,6 @@ let mapHeight = 10;
 //Sizes of the boxes to be generated
 let boxSize = 10;
 
-
 //let grass, snow, water, dirt;
 
 //Particle System variables
@@ -35,7 +34,7 @@ var smoothingFactor;
 var songList;
 var songListSize;
 var currentSongIndex;
-//var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9;
+var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9;
 
 
 function preload()
@@ -44,24 +43,82 @@ function preload()
 	songList = new Array(songListSize);
 	//globalSong = loadSound('Phlex_TakeMeHomeTonightfeat.CaitlinGare.mp3');
 	//globalSong = loadSound(songName);
+	/*
 	for(let t = 0; t < songListSize; t++)
 	{
 		//Load the songs into a list
 		var songName = "songs/song" + t + ".mp3"; 
 		//songList[t] = loadSound(songName);
 	}
-	//s0 = loadSound('songs/song0.mp3');
-	currentSongIndex = 0;
-	globalSong = loadSound(songList[currentSongIndex]);
+	*/
+
+	//Random traack from 10 songs
+	var trackNum = Math.floor(Math.random() * songListSize);
+	if(trackNum == 0)
+	{
+		globalSong = loadSound('songs/song0.mp3');
+	}
+	else if(trackNum == 1)
+	{
+		globalSong = loadSound('songs/song1.mp3');	
+	}
+	else if(trackNum == 2)
+	{
+		globalSong = loadSound('songs/song2.mp3');	
+	}
+	else if(trackNum == 3)
+	{
+		globalSong = loadSound('songs/song3.mp3');	
+	}
+	else if(trackNum == 4)
+	{
+		globalSong = loadSound('songs/song4.mp3');	
+	}
+	else if(trackNum == 5)
+	{
+		globalSong = loadSound('songs/song5.mp3');	
+	}
+	else if(trackNum == 6)
+	{
+		globalSong = loadSound('songs/song6.mp3');	
+	}
+	else if(trackNum == 7)
+	{
+		globalSong = loadSound('songs/song7.mp3');	
+	}
+	else if(trackNum == 8)
+	{
+		globalSong = loadSound('songs/song8.mp3');	
+	}
+	else if(trackNum == 9)
+	{
+		globalSong = loadSound('songs/song9.mp3');	
+	}
+
+	/*
+	s0 = loadSound('songs/song0.mp3');
+	s1 = loadSound('songs/song1.mp3');
+	s2 = loadSound('songs/song2.mp3');
+	s3 = loadSound('songs/song3.mp3');
+	s4 = loadSound('songs/song4.mp3');
+	s5 = loadSound('songs/song5.mp3');
+	s6 = loadSound('songs/song6.mp3');
+	s7 = loadSound('songs/song0.mp3');
+	s8 = loadSound('songs/song0.mp3');
+	s9 = loadSound('songs/song0.mp3');
+	*/
+
+	//currentSongIndex = 0;
+	//globalSong = loadSound(songList[currentSongIndex]);
 }
 
 function setup()
 {
 	//colorMode(HSB);
-	console.log("Running setup");
+	//console.log("Running setup");
 	createCanvas(canWidth,canHeight,WEBGL);
-	button = createButton('Next');
-	button.mousePressed(nextSong);
+	button = createButton('Toggle');
+	button.mousePressed(toggleSong);
 	globalSong.play();
 
 	//Create a new FFT object (FFT([smoothing], [bins]))
@@ -76,7 +133,7 @@ function setup()
 
 function draw()
 {
-	background(200);
+	background(0);
 	//updateCameraLocation();
 	orbitControl();
 	//loadPixels();
@@ -159,6 +216,17 @@ function toggleSong()
 
 function nextSong()
 {
+	if(s0.isPlaying()) {s0.stop(); s1.play;}
+	if(s1.isPlaying()) {s1.stop(); s2.play;}
+	if(s2.isPlaying()) {s2.stop(); s3.play;}
+	if(s3.isPlaying()) {s3.stop(); s4.play;}
+	if(s4.isPlaying()) {s4.stop(); s5.play;}
+	if(s5.isPlaying()) {s5.stop(); s6.play;}
+	if(s6.isPlaying()) {s6.stop(); s7.play;}
+	if(s7.isPlaying()) {s7.stop(); s8.play;}
+	if(s8.isPlaying()) {s8.stop(); s9.play;}
+	if(s9.isPlaying()) {s9.stop(); s0.play;}
+
 	globalSong.pause();
 	currentSongIndex++;
 	if(currentSongIndex > songListSize)
@@ -166,8 +234,8 @@ function nextSong()
 		currentSongIndex = 0;
 	}
 	//Load the songs into a list
-	var nextSong = songList[currentSongIndex];
-	globalSong = loadSound(nextSong);
-	globalSong.play();
+	///var nextSong = songList[currentSongIndex];
+	//globalSong = loadSound(nextSong);
+	//globalSong.play();
 	
 }
