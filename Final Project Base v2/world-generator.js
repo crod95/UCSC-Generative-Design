@@ -121,7 +121,7 @@ class WorldGenerator
 	//Resets all of the noise values for the 2D array and clears the scene
 	reset()
 	{
-		clear();
+		clear(); 
 		for (let x = 0; x < this.mSize; x++)
 		{
 			for(let z = 0; z < this.laneSize; z++)
