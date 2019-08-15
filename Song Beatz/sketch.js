@@ -123,14 +123,14 @@ function setup()
 
 	//Instructions
 	
-	let s = 'Testing for the text box sucks lol sdaksjfjefxnamd';
-	fill(50);
-	text('Hello World Hello World Hello World Hello World Hello World ', 700, 60); // Text wraps within text box
+	//let s = 'Testing for the text box sucks lol sdaksjfjefxnamd';
+	//fill(50);
+	//text('Hello World Hello World Hello World Hello World Hello World ', 700, 60); // Text wraps within text box
 	
 
 	//Pause and play button
 	button1 = createButton('Play/Pause');
-	button1.position(620,660);
+	button1.position(620,580);
 	button1.mousePressed(toggleSong);
 
 
